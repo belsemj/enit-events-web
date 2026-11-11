@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ENIT - École Nationale d'Ingénieurs de Tunis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lien vers le fichier JavaScript externe pour événements dynamiques -->
+    <script src="enit-events.js"></script>
+
+    <style>
+        .flip-card {
+            perspective: 1000px;
+            height: 320px;
+            /* Hauteur fixe pour maintenir la position */
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 0.5rem;
+            top: 0;
+            left: 0;
+        }
+        
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        /* Scroll smooth */
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 min-h-screen">
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-blue-800 border-b border-blue-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                    <img src="https://enit.rnu.tn/wp-content/uploads/2019/07/LOGO_ENIT_300.png" alt="Logo ENIT" class="w-6 h-6 object-contain" />
+                </div>
+                <h1 class="text-xl font-bold text-white">ENIT</h1>
+            </div>
+            <ul class="hidden md:flex space-x-8 text-sm">
+                <li>
+                    <a href="#accueil" class="hover:text-blue-200 transition cursor-pointer text-white">Accueil</a
+            >
+          </li>
+          <li>
+            <a
+              href="#formations"
+              class="hover:text-blue-200 transition cursor-pointer text-white"
+              >Formations</a
+            >
+          </li>
+          <li>
+            <a
+              href="#evenements"
+              class="hover:text-blue-200 transition cursor-pointer text-white"
+              >Événements</a
+            >
+          </li>
+          <li>
+            <a
+              href="#recherche"
+              class="hover:text-blue-200 transition cursor-pointer text-white"
+              >Recherche</a
+            >
+          </li>
+        </ul>
+        <button
+          class="px-4 py-2 text-sm rounded-lg bg-white text-blue-800 font-semibold hover:bg-blue-50 transition"
+        >
+          Portail Étudiant
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section
+      id="accueil"
+      class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center scroll-mt-20"
+    >
+      <div class="space-y-6">
+        <h2 class="text-4xl font-extrabold leading-tight text-gray-900">
+          École Nationale <br />
+          <span class="text-blue-700">d'Ingénieurs de Tunis</span>
+        </h2>
+        <p class="text-gray-600 max-w-lg">
+          Depuis plus de 50 ans, l'ENIT forme l'élite des ingénieurs tunisiens.
+          Établissement de référence en Tunisie et dans la région, l'ENIT allie
+          excellence académique, recherche de pointe et innovation
+          technologique.
+        </p>
+        <div class="flex gap-4">
+          <a
+            href="#evenements"
+            class="px-6 py-3 rounded-xl bg-blue-700 text-white font-semibold hover:bg-blue-800 hover:scale-105 transition transform"
+          >
+            Nos Événements
+          </a>
+                    <a href="#formations" class="px-6 py-3 rounded-xl border-2 border-blue-700 text-blue-700 hover:bg-blue-50 transition">
+            Découvrir nos Formations
+          </a>
+        </div>
+        </div>
+
+        <div class="relative">
+            <div class="absolute inset-0 blur-3xl bg-blue-500/20"></div>
+            <img src="https://media.licdn.com/dms/image/v2/C4E1BAQEp30_5WtGYuQ/company-background_10000/company-background_10000/0/1628583126300/enit_cover?e=2147483647&v=beta&t=P6Kd9gT1wnwK2MIe3o56ZTeUOinPOIP499wpsG6YBx8" alt="Campus ENIT" class="relative rounded-2xl shadow-2xl ring-2 ring-blue-200"
+            />
+        </div>
+        </section>
+
+        <!-- STATISTIQUES ENIT -->
+        <section class="bg-blue-50 py-16">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+                        <p class="text-4xl font-bold text-blue-700">50+</p>
+                        <p class="text-gray-600 text-sm mt-2">Ans d'Excellence</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+                        <p class="text-4xl font-bold text-blue-700">3000+</p>
+                        <p class="text-gray-600 text-sm mt-2">Étudiants</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+                        <p class="text-4xl font-bold text-blue-700">200+</p>
+                        <p class="text-gray-600 text-sm mt-2">Enseignants-Chercheurs</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition">
+                        <p class="text-4xl font-bold text-blue-700">15+</p>
+                        <p class="text-gray-600 text-sm mt-2">Laboratoires de Recherche</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMATIONS ENIT -->
+        <section id="formations" class="max-w-7xl mx-auto px-6 py-16 scroll-mt-20">
+            <h3 class="text-2xl font-bold mb-6 text-blue-700 text-center">
+                Nos Formations d'Ingénieurs
+            </h3>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+                L'ENIT propose un cycle de formation de 3 ans préparant au diplôme national d'ingénieur dans 9 spécialités.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white border border-blue-100 p-6 rounded-xl hover:shadow-lg transition">
+                    <h4 class="font-semibold mb-2 text-gray-900 text-lg">Génie Civil</h4>
+                    <p class="text-sm text-gray-600">
+                        Formation complète en construction, structures, géotechnique et infrastructures urbaines.
+                    </p>
+                </div>
+                <div class="bg-white border border-blue-100 p-6 rounded-xl hover:shadow-lg transition">
+                    <h4 class="font-semibold mb-2 text-gray-900 text-lg">
+                        Génie Électrique
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                        Systèmes électriques, électronique de puissance, énergies renouvelables et automatique.
+                    </p>
+                </div>
+                <div class="bg-white border border-blue-100 p-6 rounded-xl hover:shadow-lg transition">
+                    <h4 class="font-semibold mb-2 text-gray-900 text-lg">
+                        Génie Mécanique
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                        Conception, fabrication, maintenance et innovation en systèmes mécaniques.
+                    </p>
+                </div>
+                <div class="bg-white border border-blue-100 p-6 rounded-xl hover:shadow-lg transition">
+                    <h4 class="font-semibold mb-2 text-gray-900 text-lg">
+                        Génie Industriel
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                        Optimisation des processus, gestion de production et amélioration continue.
+                    </p>
+                </div>
+                <div class="bg-white border border-blue-100 p-6 rounded-xl hover:shadow-lg transition">
+                    <h4 class="font-semibold mb-2 text-gray-900 text-lg">
+                        Génie Hydraulique
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                        Gestion des ressources en eau, aménagements hydrauliques et environnement.
+                    </p>
+                </div>
+                <div class="bg-white border border-blue-100 p-6 rounded-xl hover:shadow-lg transition">
+                    <h4 class="font-semibold mb-2 text-gray-900 text-lg">Informatique</h4>
+                    <p class="text-sm text-gray-600">
+                        Développement logiciel, intelligence artificielle, réseaux et cybersécurité.
+                    </p>
+                </div>
+                <div class="bg-white border border-blue-100 p-6 rounded-xl hover:shadow-lg transition">
+                    <h4 class="font-semibold mb-2 text-gray-900 text-lg">
+                        Télécommunications
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                        Réseaux de communication, systèmes sans fil et technologies mobiles.
+                    </p>
+                </div>
+                <div class="bg-white border border-blue-100 p-6 rounded-xl hover:shadow-lg transition">
+                    <h4 class="font-semibold mb-2 text-gray-900 text-lg">
+                        Génie Énergétique
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                        Énergies renouvelables, efficacité énergétique et développement durable.
+                    </p>
+                </div>
+                <div class="bg-white border border-blue-100 p-6 rounded-xl hover:shadow-lg transition">
+                    <h4 class="font-semibold mb-2 text-gray-900 text-lg">
+                        Techniques Avancées
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                        Parcours d'excellence en double diplôme avec l'ENSTA Paris.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÉVÉNEMENTS ENIT -->
+        <section id="evenements" class="max-w-7xl mx-auto px-6 py-16 scroll-mt-20">
+            <h3 class="text-2xl font-bold mb-6 text-blue-700 text-center">
+                Événements & Actualités ENIT
+            </h3>
+
+            <p class="text-gray-600 mb-12 text-center max-w-2xl mx-auto">
+                Découvrez les derniers événements, conférences internationales, partenariats et actualités de l'École Nationale d'Ingénieurs de Tunis. Cliquez sur une carte pour voir plus de détails.
+            </p>
+
+            <!-- Galerie d'événements (chargée dynamiquement depuis JSON) -->
+            <div id="eventsGallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Les événements seront chargés ici par JavaScript depuis events.json -->
+                <div class="col-span-full text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
+                    <p class="text-gray-500 mt-4">Chargement des événements ENIT...</p>
+                </div>
+            </div>
+
+            <!-- Instruction pour l'utilisateur -->
+            <div class="mt-12 text-center">
+                <div class="inline-flex items-center space-x-2 bg-blue-50 px-6 py-3 rounded-lg border border-blue-200">
+                    <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+                    <p class="text-blue-700 text-sm font-medium">
+                        Cliquez sur une carte pour voir la description complète de l'événement
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECHERCHE ENIT -->
+        <section id="recherche" class="bg-gray-50 py-16 scroll-mt-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h3 class="text-2xl font-bold mb-6 text-blue-700 text-center">
+                    Recherche & Innovation
+                </h3>
+                <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+                    L'ENIT compte plus de 15 laboratoires de recherche couvrant tous les domaines de l'ingénierie et contribuant au développement technologique et scientifique.
+                </p>
+
+                <div class="space-y-8">
+                    <!-- Laboratoires principaux -->
+                    <div class="bg-white border border-blue-100 p-6 rounded-xl">
+                        <h4 class="text-xl font-semibold mb-4 text-gray-900">
+                            Laboratoires de Recherche
+                        </h4>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h5 class="font-semibold text-blue-700 text-sm mb-2">LPMS</h5>
+                                <p class="text-xs text-gray-600">
+                                    Laboratoire de Photovoltaïque et Matériaux Semiconducteurs
+                                </p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h5 class="font-semibold text-blue-700 text-sm mb-2">LR3MI</h5>
+                                <p class="text-xs text-gray-600">
+                                    Matériaux, Mesures et Modélisation en Ingénierie
+                                </p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h5 class="font-semibold text-blue-700 text-sm mb-2">LSEA</h5>
+                                <p class="text-xs text-gray-600">
+                                    Laboratoire des Systèmes Électriques et Asservissement
+                                </p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h5 class="font-semibold text-blue-700 text-sm mb-2">LGC</h5>
+                                <p class="text-xs text-gray-600">Laboratoire de Génie Civil</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h5 class="font-semibold text-blue-700 text-sm mb-2">
+                                    LR-SITI
+                                </h5>
+                                <p class="text-xs text-gray-600">
+                                    Signaux, Systèmes Intelligents et Technologies de l'Information
+                                </p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h5 class="font-semibold text-blue-700 text-sm mb-2">LMHE</h5>
+                                <p class="text-xs text-gray-600">
+                                    Laboratoire de Modélisation Hydraulique et Environnementale
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Axes de recherche -->
+                    <div class="bg-white border border-blue-100 p-6 rounded-xl">
+                        <h4 class="text-xl font-semibold mb-4 text-gray-900">
+                            Domaines d'Excellence
+                        </h4>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-blue-700 mb-3">
+                                    Innovation Technologique
+                                </h5>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-start">
+                                        <span class="text-blue-500 mr-2">•</span> Intelligence artificielle et Big Data
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-blue-500 mr-2">•</span> Énergies renouvelables et efficacité énergétique
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-blue-500 mr-2">•</span> Matériaux avancés et nanotechnologies
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-blue-700 mb-3">
+                                    Développement Durable
+                                </h5>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-start">
+                                        <span class="text-blue-500 mr-2">•</span> Gestion des ressources en eau
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-blue-500 mr-2">•</span> Smart cities et urbanisme durable
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-blue-500 mr-2">•</span> Technologies vertes et économie circulaire
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partenariats internationaux -->
+                    <div class="bg-white border border-blue-100 p-6 rounded-xl">
+                        <h4 class="text-xl font-semibold mb-4 text-gray-900">
+                            Partenariats Internationaux
+                        </h4>
+                        <p class="text-gray-600 mb-4 text-sm">
+                            L'ENIT collabore avec des institutions prestigieuses à travers le monde pour renforcer la recherche et la mobilité étudiante.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm border border-blue-200">ENSTA Paris (France)</span
+              >
+              <span
+                class="bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm border border-blue-200"
+                >Helmut Schmidt University (Allemagne)</span
+              >
+              <span
+                class="bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm border border-blue-200"
+                >Polytechnique Montréal (Canada)</span
+              >
+              <span
+                class="bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm border border-blue-200"
+                >TU Dresden (Allemagne)</span
+              >
+              <span
+                class="bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm border border-blue-200"
+                >INSA Lyon (France)</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-blue-800 border-t border-blue-700 text-white py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+          <!-- Colonne 1 -->
+          <div>
+            <h4 class="font-bold text-lg mb-4">ENIT</h4>
+            <p class="text-sm text-blue-100 leading-relaxed">
+              École Nationale d'Ingénieurs de Tunis - Formation d'excellence en
+              ingénierie depuis 1968.
+            </p>
+          </div>
+
+          <!-- Colonne 2 -->
+          <div>
+            <h4 class="font-bold text-lg mb-4">Liens Rapides</h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="#formations"
+                  class="text-blue-100 hover:text-white transition"
+                  >Formations</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#evenements"
+                  class="text-blue-100 hover:text-white transition"
+                  >Événements</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#recherche"
+                  class="text-blue-100 hover:text-white transition"
+                  >Recherche</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-blue-100 hover:text-white transition"
+                  >Vie Étudiante</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Colonne 3 -->
+          <div>
+            <h4 class="font-bold text-lg mb-4">Contact</h4>
+            <ul class="space-y-2 text-sm text-blue-100">
+              <li>📍 BP 37, Le Belvédère</li>
+              <li>1002 Tunis, Tunisie</li>
+              <li>📞 +216 71 872 729</li>
+              <li>✉️ contact@enit.rnu.tn</li>
+            </ul>
+          </div>
+
+          <!-- Colonne 4 -->
+          <div>
+            <h4 class="font-bold text-lg mb-4">Suivez-nous</h4>
+            <div class="flex space-x-3">
+              <a
+                href="#"
+                class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition"
+              >
+                <span class="text-sm">f</span>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                <span class="text-sm">in</span>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                <span class="text-sm">yt</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-blue-700 mt-8 pt-8 text-center text-sm text-blue-100">
+                    <p>
+                        &copy; 2026 ENIT - École Nationale d'Ingénieurs de Tunis. Tous droits réservés.
+                    </p>
+                </div>
+            </div>
+            </footer>
+</body>
+
+</html>
